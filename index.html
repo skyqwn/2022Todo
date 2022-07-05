@@ -11,12 +11,19 @@
     <div id="day"></div>
     <div id="할일"></div>
 
-    <form>
-      <input id="todoInput" type="text" placeholder="오늘의 할일" />
-      <input id="send" type="submit" value="🙆" />
+    <form id="todo-form">
+      <input type="text" placeholder="오늘 할일을 적어라" required />
     </form>
 
-    <div id="todoList"></div>
+    <div class="list-container">
+      <ul id="todo-list">
+        할일
+      </ul>
+
+      <ul id="todo_success-list">
+        성공
+      </ul>
+    </div>
     <script src="day.js"></script>
   </body>
 </html>
