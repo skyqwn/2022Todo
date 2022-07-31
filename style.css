@@ -32,6 +32,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
 }
 
 #todo_success-list {
@@ -46,6 +47,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+#todo_success-list > li {
+  box-sizing: border-box;
 }
 
 .finish-plan {
@@ -70,6 +74,13 @@ body {
 
 .emoji {
   margin-right: 5px;
+}
+
+.emoji:hover {
+  background-color: #eee;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 .successDayWrap {
   display: flex;
