@@ -52,26 +52,6 @@ function successToDo(e) {
   saveToDo();
 }
 
-// const cancleToDo = (e) => {
-//   const li = e.target.parentElement;
-//   li.remove();
-
-//   const cancleArr = toDos.map((todo) => {
-//     if (todo.id === li.id) {
-//       todo = {
-//         ...todo,
-//         issuccess: false,
-//         successMonth: null,
-//         successDay: null,
-//       };
-//       paintTodo(todo);
-//     }
-//     return todo;
-//   });
-//   toDos = cancleArr;
-//   saveToDo();
-// };
-
 const cancleToDo = (e) => {
   const li = e.target.parentElement;
   li.remove();
@@ -146,14 +126,15 @@ function paintTodo(todo) {
   span.innerHTML = todo.할일;
   const xbutton = document.createElement("button");
   xbutton.innerHTML = "❌";
+  xbutton.classList.add("emoji");
   xbutton.addEventListener("click", deleteToDo);
-
   li.appendChild(span);
-  li.appendChild(xbutton);
+
   if (todo.issuccess) {
     const cancleBtn = document.createElement("button");
     li.appendChild(cancleBtn);
     cancleBtn.innerHTML = "⛔️";
+    cancleBtn.classList.add("emoji");
     cancleBtn.addEventListener("click", cancleToDo);
     toDoSuccessList.appendChild(li);
   }
@@ -162,12 +143,16 @@ function paintTodo(todo) {
     obutton.addEventListener("click", successToDo);
     li.appendChild(obutton);
     obutton.innerHTML = "🙆";
+    obutton.classList.add("emoji");
     toDoList.appendChild(li);
     const editBtn = document.createElement("button");
     editBtn.addEventListener("click", editToDo);
     li.appendChild(editBtn);
     editBtn.innerText = "🔨";
+    editBtn.classList.add("emoji");
   }
+
+  li.appendChild(xbutton);
 
   const dayWrap = document.createElement("span");
   dayWrap.innerHTML = `${todo.createMonth}월${todo.createDay}일`;
@@ -175,6 +160,7 @@ function paintTodo(todo) {
 
   if (todo.successMonth && todo.successDay) {
     const successDayWrap = document.createElement("div");
+    successDayWrap.classList.add("successDayWrap");
     successDayWrap.innerHTML = `완료 날짜: ${todo.successMonth}월${todo.successDay}일`;
     li.appendChild(successDayWrap);
   }

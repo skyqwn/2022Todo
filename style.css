@@ -33,9 +33,6 @@ body {
   flex-direction: column;
   align-items: center;
 }
-.plan {
-  font-size: 28px;
-}
 
 #todo_success-list {
   padding: 20px;
@@ -52,7 +49,7 @@ body {
 }
 
 .finish-plan {
-  font-size: 28px;
+  font-size: 26px;
 }
 
 .input {
@@ -64,5 +61,18 @@ body {
 
 .plan-content {
   margin-right: 50px;
-  font-size: 20px;
+  font-size: 26px;
+}
+
+.plan-title {
+  font-size: 26px;
+}
+
+.emoji {
+  margin-right: 5px;
+}
+.successDayWrap {
+  display: flex;
+  justify-content: flex-end;
+  color: tomato;
 }
