@@ -5,25 +5,64 @@ body {
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  background-image: linear-gradient(120deg, #eccc68, #a4b0be);
+  background-color: #eee;
 }
 
 #day {
   margin: 20px;
   text-align: center;
+  font-size: 40px;
 }
 
 .list-container {
   display: flex;
   justify-content: space-between;
-  width: 800px;
+  width: 1200px;
 }
 
 #todo-list {
   padding: 20px;
+  width: 350px;
   height: 500px;
+  margin-top: 30px;
   background-color: white;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.plan {
+  font-size: 28px;
+}
+
+#todo_success-list {
+  padding: 20px;
+  width: 350px;
+  height: 500px;
+  margin-top: 30px;
+  background-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.finish-plan {
+  font-size: 28px;
+}
+
+.input {
+  padding: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.plan-content {
+  margin-right: 50px;
+  font-size: 20px;
 }

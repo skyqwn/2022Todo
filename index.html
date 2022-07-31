@@ -6,24 +6,29 @@
     <meta name="viewport" content="width=, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <title>2022 Todo List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
     <div id="day"></div>
-    <div id="할일"></div>
 
     <form id="todo-form">
-      <input type="text" placeholder="오늘 할일을 적어라" required />
+      <input
+        class="input"
+        type="text"
+        placeholder="오늘 할일을 입력해주세요"
+        required
+      />
     </form>
 
     <div class="list-container">
       <ul id="todo-list">
-        할일
+        <div class="plan">할일</div>
       </ul>
 
       <ul id="todo_success-list">
-        성공
+        <div class="finish-plan">할일 완료</div>
       </ul>
     </div>
-    <script src="day.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
