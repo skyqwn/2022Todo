@@ -17,6 +17,7 @@ const plan = document.querySelector(".plan");
 const finishPlan = document.querySelector(".finish-plan");
 
 let toDos = [];
+// let isclicked = false;
 
 function saveToDo() {
   localStorage.setItem("todos", JSON.stringify(toDos));
@@ -72,20 +73,34 @@ const cancleToDo = (e) => {
   saveToDo();
 };
 
-const editToDo = (e) => {
-  const div = e.target.parentElement;
+//수정하기 버튼을 한번만 누르고 또 누르면 작동이 안되게 하여야한다.
 
-  const { 할일, id } = toDos.find((todo) => todo.id === div.id);
+const updateToDos = ({ id, 할일 }) => {
+  const editArr = toDos.map((todo) => {
+    if (todo.id === id) {
+      todo = { ...todo, 할일 };
+    }
+    return todo;
+  });
+  toDos = editArr;
+  saveToDo();
+};
+
+const editToDo = (e) => {
+  const li = e.target.parentElement;
+  const { 할일, id } = toDos.find((todo) => todo.id === li.id);
   toDoInput.value = 할일;
+  // if (!isclicked) {
   const button = document.createElement("button");
   button.innerHTML = "수정";
-
   button.addEventListener("click", (e) => {
     e.preventDefault();
     button.remove();
     updateToDo(id);
   });
   toDoForm.append(button);
+  // isclicked = true; //이러면 재사용이 불가한데...
+  // }
 };
 
 const updateToDo = (id) => {
@@ -99,8 +114,9 @@ const updateToDo = (id) => {
     id,
   };
   localEditToDo(data);
-  alert("수정되었습니다.");
   toDoList.innerHTML = "";
+  toDoSuccessList.innerHTML = "";
+  alert("수정되었습니다.");
   toDos.forEach((todo) => {
     paintTodo(todo);
   });
@@ -108,14 +124,15 @@ const updateToDo = (id) => {
 };
 
 const localEditToDo = ({ 할일, id }) => {
-  const updatetoDos = toDos.map((todo) => {
+  const updateToDos = toDos.map((todo) => {
     if (todo.id === id) {
       todo = { ...todo, 할일 };
     }
     return todo;
   });
-  toDos = updatetoDos;
-  localStorage.setItem("todos", JSON.stringify(toDos));
+  toDos = updateToDos;
+  // localStorage.setItem("todos", JSON.stringify(toDos));
+  saveToDo();
 };
 
 function paintTodo(todo) {
@@ -146,7 +163,7 @@ function paintTodo(todo) {
     obutton.classList.add("emoji");
     toDoList.appendChild(li);
     const editBtn = document.createElement("button");
-    editBtn.addEventListener("click", editToDo);
+    editBtn.addEventListener("click", editToDo, { once: true }); //클릭한번만하는거라는뎅.;;
     li.appendChild(editBtn);
     editBtn.innerText = "🔨";
     editBtn.classList.add("emoji");
