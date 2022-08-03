@@ -15,6 +15,7 @@ const toDoList = document.querySelector("#todo-list");
 const toDoSuccessList = document.querySelector("#todo_success-list");
 const plan = document.querySelector(".plan");
 const finishPlan = document.querySelector(".finish-plan");
+const btnContainer = document.querySelector(".button-container");
 
 let toDos = [];
 // let isclicked = false;
@@ -75,30 +76,27 @@ const cancleToDo = (e) => {
 
 //수정하기 버튼을 한번만 누르고 또 누르면 작동이 안되게 하여야한다.
 
-const updateToDos = ({ id, 할일 }) => {
-  const editArr = toDos.map((todo) => {
-    if (todo.id === id) {
-      todo = { ...todo, 할일 };
-    }
-    return todo;
-  });
-  toDos = editArr;
-  saveToDo();
-};
-
 const editToDo = (e) => {
   const li = e.target.parentElement;
   const { 할일, id } = toDos.find((todo) => todo.id === li.id);
   toDoInput.value = 할일;
   // if (!isclicked) {
+  btnContainer.innerHTML = "";
   const button = document.createElement("button");
   button.innerHTML = "수정";
+  const buttonCancle = document.createElement("div");
+  buttonCancle.innerHTML = "취소";
+  buttonCancle.classList.add("btnCancle");
   button.addEventListener("click", (e) => {
     e.preventDefault();
     button.remove();
     updateToDo(id);
   });
-  toDoForm.append(button);
+  buttonCancle.addEventListener("click", (e) => {
+    window.location.reload();
+  });
+  btnContainer.append(button);
+  btnContainer.append(buttonCancle);
   // isclicked = true; //이러면 재사용이 불가한데...
   // }
 };
@@ -131,7 +129,6 @@ const localEditToDo = ({ 할일, id }) => {
     return todo;
   });
   toDos = updateToDos;
-  // localStorage.setItem("todos", JSON.stringify(toDos));
   saveToDo();
 };
 
@@ -163,7 +160,7 @@ function paintTodo(todo) {
     obutton.classList.add("emoji");
     toDoList.appendChild(li);
     const editBtn = document.createElement("button");
-    editBtn.addEventListener("click", editToDo, { once: true }); //클릭한번만하는거라는뎅.;;
+    editBtn.addEventListener("click", editToDo); //클릭한번만하는거라는뎅.;;
     li.appendChild(editBtn);
     editBtn.innerText = "🔨";
     editBtn.classList.add("emoji");

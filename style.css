@@ -52,6 +52,16 @@ body {
   box-sizing: border-box;
 }
 
+#todo-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-container {
+  margin-left: 10px;
+}
+
 .finish-plan {
   font-size: 26px;
 }
@@ -86,4 +96,14 @@ body {
   display: flex;
   justify-content: flex-end;
   color: tomato;
+}
+
+.btnCancle {
+  margin-left: 5px;
+  border-left: 1px solid black;
+  padding-left: 6px;
+}
+
+.button-container {
+  display: flex;
 }
