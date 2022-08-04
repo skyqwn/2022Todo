@@ -203,26 +203,7 @@ function handleToDoSubmit(e) {
   saveToDo();
 }
 
-const handleToDoSubmit2 = (e) => {
-  e.preventDefault();
-  const newTodo = toDoInput.value;
-  toDoInput.value = "";
 
-  const { month: createMonth, day: createDay } = getDay();
-
-  const newTodoObj = {
-    할일: newTodo,
-    id: Date.now().toString(),
-    issuccess: false,
-    createMonth,
-    createDay,
-    successMonth: null,
-    successDay: null,
-  };
-  toDos.push(newTodoObj);
-  paintTodo(newTodoObj);
-  save;
-};
 
 const init = () => {
   getDay();
